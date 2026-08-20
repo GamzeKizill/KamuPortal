@@ -1,0 +1,61 @@
+﻿@using Microsoft.AspNetCore.Http
+@{
+
+    var admin = Context.Session.GetString("Admin");
+
+}
+@model List<KamuPortal.Models.Haber>
+<div class="container mt-5">
+
+    <h1>Haberler</h1>
+
+    @if (admin != null)
+
+    {
+
+        <a asp-action="Create"
+        class="btn btn-sucess mb-3">
+            Yeni Haber Ekle
+        </a>
+
+    }
+
+    <hr />
+
+    @foreach (var haber in Model)
+    {
+        <div class="card mb-3">
+            <div class="card-body">
+
+                <h4>@haber.Baslik</h4>
+
+                <small class="text-muted">
+                    @haber.Tarih.ToShortDateString()
+                </small>
+
+                <p class="mt-2">
+                    @haber.Icerik
+                </p>
+
+
+                @if (admin != null)
+                {
+
+                    <a asp-action="Edit"
+                    asp-route-id="@haber.Id"
+                    class="btn btn-warning mt-2">
+                        Düzenle
+                    </a>
+
+
+                    <a asp-action="Delete"
+                    asp-route-id="@haber.Id"
+                    class="btn btn-danger mt-2">
+                    Sil
+                </a>
+                }
+
+            </div>
+        </div>
+    }
+</div>

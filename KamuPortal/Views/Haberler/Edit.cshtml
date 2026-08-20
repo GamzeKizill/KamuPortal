@@ -1,0 +1,32 @@
+﻿@model KamuPortal.Models.Haber
+
+<div class="container mt-5">
+
+	<h1>Haberi Düzenle</h1>
+
+	<form asp-action="Edit" method="post">
+
+		<input type="hidden" asp-for="Id" />
+
+		<div class="mb-3">
+			<label class="form-label">Başlık</label>
+			<input asp-for="Baslik" class="form-control" />
+		</div>
+
+
+		<div class="mb-3">
+			<label class="form-label">Tarih</label>
+			<input asp-for="Tarih" type="date" class="form-control" />
+		</div>
+
+
+		<div class="mb-3">
+			<label class="form-label">İçerik</label>
+			<textarea asp-for="Icerik" class="form-control"  rows="5"></textarea>
+		</div>
+
+		<button type="submit" class="btn btn-warning">Güncelle</button>"
+
+	</form>
+
+</div>

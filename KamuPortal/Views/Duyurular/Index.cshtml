@@ -1,0 +1,48 @@
+﻿@model List<KamuPortal.Models.Duyurular>
+
+@if(Context.Session.GetString("Admin") != null)
+{
+	<a asp-action="Create"
+	class="btn btn-success mb-3">
+	Yeni Duyuru Ekle
+	</a>
+}
+
+<div class="container mt-5">
+	<h1>Duyurular</h1>
+	<hr />
+
+	@foreach (var duyuru in Model)
+	{
+		<div class="card mb-3">
+			<div class="card-body">
+
+				<h4>@duyuru.Baslik</h4>
+
+				<small>
+					@duyuru.Tarih.ToShortDateString()
+				</small>
+
+				<p class="mt-2">
+					@duyuru.Icerik
+				</p>
+
+				@if (Context.Session.GetString("Admin") != null)
+				{
+					<a asp-action="Edit"
+					   asp-route-id="@duyuru.Id"
+					   class="btn btn-warning mt-2">
+						Düzenle
+					</a>
+
+					<a asp-action="Delete"
+					   asp-route-id="@duyuru.Id"
+					   class="btn btn-danger mt-2">
+						Sil
+					</a>
+				}
+
+			</div>
+		</div>
+	}
+</div>

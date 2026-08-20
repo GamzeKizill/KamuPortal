@@ -1,9 +1,42 @@
-﻿<div class="text-center mt-5">
-    <h1>KIRŞEHİR VALİLİĞİ</h1>
+﻿<div class="text-center py-5 text-white position-relative"
+     style="background: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.3)), url('@Url.Content("~/Images/trbayrak.png")') no-repeat center center;
+            background-size: cover;
+            min-height: 350px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;">
 
-    <h3>Kamu Portalı</h3>
+    <h1 class="display-4 font-weight-bold">ANKARA VALİLİĞİ</h1>
+    <p class="display-4">Kamu Portalı</p>
+    <p class="lead">TC Ankara Valiliği</p>
+</div>
 
-    <p>
-        ASP.NET Core MVC ile geliştirilmektedir.
-    </p>
+<div class="container my-5">
+
+    <div class="d-flex justify-content-between align-items-center mb-4 pb-2 border-bottom">
+        <h2 class="fw-bold m-0">Son Haberler</h2>
+        <a href="#" class="btn btn-outline-primary btn-sm">Tüm Haberler</a>
+    </div>
+
+    <div class="row g-4 justify-content-center">
+        @foreach (var haber in Model)
+        {
+            <a asp-controller="Haberler"
+                asp-action="Details"
+                asp-route-id="@haber.Id"
+                class="text-decoration-none text-dark">
+
+            <div class="col-12 col-sm-6 col-md-4">
+                <div class="card shadow-sm h-100 border-0 bg-light">
+                    <div class="card-body d-flex flex-column p-4">
+                        <h5 class="card-title fw-bold text-dark mb-1">@haber.Baslik</h5>
+                        <small class="text-muted mb-3 d-block">@haber.Tarih.ToString("dd.MM.yyyy")</small>
+                        <p class="card-text text-secondary flex-grow-1">@haber.Icerik</p>
+                    </div>
+                </div>
+            </div>
+            </a>
+        }
+    </div>
+
 </div>
